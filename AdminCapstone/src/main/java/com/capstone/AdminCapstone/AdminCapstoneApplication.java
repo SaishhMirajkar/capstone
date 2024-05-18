@@ -1,15 +1,13 @@
-package com.capstone.ApiGatewayCapstone;
+package com.capstone.AdminCapstone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-//check
 @SpringBootApplication
-public class ApiGatewayCapstoneApplication {
+public class AdminCapstoneApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayCapstoneApplication.class, args);
+		SpringApplication.run(AdminCapstoneApplication.class, args);
 	}
 
 }
