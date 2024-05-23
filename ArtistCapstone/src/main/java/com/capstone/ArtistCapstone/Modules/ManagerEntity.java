@@ -1,4 +1,4 @@
-package com.capstone.ArtistCapstone.Entities;
+package com.capstone.ArtistCapstone.Modules;
 
 public class ManagerEntity {
 	private int managerId;
