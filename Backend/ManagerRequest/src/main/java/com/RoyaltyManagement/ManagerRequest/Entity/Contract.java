@@ -4,6 +4,8 @@ package com.RoyaltyManagement.ManagerRequest.Entity;
 
 import java.time.LocalDate;
 
+import com.RoyaltyManagement.ManagerRequest.Repo.Approach;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +15,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "contracts")
+@Table(name = "RoyaltyContract")
 public class Contract {
  
     @Id
@@ -26,70 +28,91 @@ public class Contract {
     private int artistPercentageOfRoyalty;
     private LocalDate contractStartDate;
     private LocalDate contractEndDate;
-    private String status;
+    private Boolean flag;
     private String approach;
     private String contractStatus;
    
  
     
-	public String getContractStatus() {
-		return contractStatus;
-	}
+	
 
-	public void setContractStatus(String contractStatus) {
-		this.contractStatus = contractStatus;
-	}
-
-	public String getApproach() {
-		return approach;
-	}
-
-	public void setApproach(String approach) {
-		this.approach = approach;
-	}
-
- 
 	public Long getContractId() {
 		return contractId;
 	}
- 
+
+
+
+
+
 	public void setContractId(Long contractId) {
 		this.contractId = contractId;
 	}
- 
+
+
+
+
+
 	public Long getArtistId() {
 		return artistId;
 	}
- 
+
+
+
+
+
 	public void setArtistId(Long artistId) {
 		this.artistId = artistId;
 	}
- 
+
+
+
+
+
 	public Long getManagerId() {
 		return managerId;
 	}
- 
+
+
+
+
+
 	public void setManagerId(Long managerId) {
 		this.managerId = managerId;
 	}
- 
+
+
+
+
+
 	public int getManagerPercentageOfRoyalty() {
 		return managerPercentageOfRoyalty;
 	}
- 
+
+
+
+
+
 	public void setManagerPercentageOfRoyalty(int managerPercentageOfRoyalty) {
 		this.managerPercentageOfRoyalty = managerPercentageOfRoyalty;
 	}
- 
+
+
+
+
+
 	public int getArtistPercentageOfRoyalty() {
 		return artistPercentageOfRoyalty;
 	}
- 
+
+
+
+
+
 	public void setArtistPercentageOfRoyalty(int artistPercentageOfRoyalty) {
 		this.artistPercentageOfRoyalty = artistPercentageOfRoyalty;
 	}
- 
-	
+
+
 
 
 
@@ -97,33 +120,94 @@ public class Contract {
 		return contractStartDate;
 	}
 
+
+
+
+
 	public void setContractStartDate(LocalDate contractStartDate) {
 		this.contractStartDate = contractStartDate;
 	}
+
+
+
+
 
 	public LocalDate getContractEndDate() {
 		return contractEndDate;
 	}
 
+
+
+
+
 	public void setContractEndDate(LocalDate contractEndDate) {
 		this.contractEndDate = contractEndDate;
 	}
 
-	public String getStatus() {
-		return status;
+
+
+
+
+	public Boolean getFlag() {
+		return flag;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+
+
+
+
+	public void setFlag(Boolean flag) {
+		this.flag = flag;
 	}
+
+
+
+
+
+	public String getApproach() {
+		return approach;
+	}
+
+
+
+
+
+	public void setApproach(String approach) {
+		this.approach = approach;
+	}
+
+
+
+
+
+	public String getContractStatus() {
+		return contractStatus;
+	}
+
+
+
+
+
+	public void setContractStatus(String contractStatus) {
+		this.contractStatus = contractStatus;
+	}
+
+
+
+
 
 	@Override
 	public String toString() {
 		return "Contract [contractId=" + contractId + ", artistId=" + artistId + ", managerId=" + managerId
 				+ ", managerPercentageOfRoyalty=" + managerPercentageOfRoyalty + ", artistPercentageOfRoyalty="
 				+ artistPercentageOfRoyalty + ", contractStartDate=" + contractStartDate + ", contractEndDate="
-				+ contractEndDate + ", status=" + status + ", approach=" + approach + "]";
+				+ contractEndDate + ", flag=" + flag + ", approach=" + approach + ", contractStatus=" + contractStatus
+				+ "]";
 	}
+
+
+
+
 
 	@PrePersist
 	@PreUpdate

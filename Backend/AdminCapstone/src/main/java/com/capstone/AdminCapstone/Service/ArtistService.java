@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capstone.AdminCapstone.Entities.Artist;
+import com.capstone.AdminCapstone.Entities.Artists;
 import com.capstone.AdminCapstone.Repository.ArtistRepository;
 
 
@@ -17,7 +17,7 @@ public class ArtistService {
   
     
     @Transactional
-    public void saveArtist(Artist artist) {
+    public void saveArtist(Artists artist) {
         artistRepository.save(artist);
     }
 }

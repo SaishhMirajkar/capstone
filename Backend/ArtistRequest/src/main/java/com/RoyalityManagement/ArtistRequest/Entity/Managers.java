@@ -6,11 +6,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "manager")
-public class Manager {
+@Table(name = "managers")
+public class Managers {
 
     @Id
-    @Column(name = "managerid")
+    @Column(name = "manager_id")
     private Long managerid;
 
     @Column(name = "manager_name", nullable = false)

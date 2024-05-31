@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.RoyaltyManagement.ManagerRequest.Entity.Manager;
+import com.RoyaltyManagement.ManagerRequest.Entity.Managers;
 import com.RoyaltyManagement.ManagerRequest.Repo.ManagerRepository;
 
 @RestController

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.RoyalityManagement.ArtistRequest.Entity.Manager;
+import com.RoyalityManagement.ArtistRequest.Entity.Managers;
 import com.RoyalityManagement.ArtistRequest.Service.ManagerService;
 
 @RestController
@@ -21,8 +21,8 @@ public class ManagerController {
     private ManagerService managerService;
     
     @GetMapping("/allManagers")
-    public ResponseEntity<List<Manager>> getAllManagers() {
-        List<Manager> managers = managerService.getAllManagers();
+    public ResponseEntity<List<Managers>> getAllManagers() {
+        List<Managers> managers = managerService.getAllManagers();
         return ResponseEntity.ok(managers); // Return 200 OK with the list of managers
     }
     

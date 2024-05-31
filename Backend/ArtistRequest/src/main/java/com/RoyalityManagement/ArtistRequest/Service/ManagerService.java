@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.RoyalityManagement.ArtistRequest.Entity.Manager;
+import com.RoyalityManagement.ArtistRequest.Entity.Managers;
 import com.RoyalityManagement.ArtistRequest.Repo.ManagerRepository;
 
 
@@ -17,7 +17,7 @@ public class ManagerService {
 	    @Autowired
 	    private ManagerRepository managerRepository;
 
-	    public List<Manager> getAllManagers() {
+	    public List<Managers> getAllManagers() {
 	        return managerRepository.findAll();
 	    }
 }

@@ -46,12 +46,12 @@ public class ContractController {
 	    
 	    
 	    @PutMapping("/{contractId}")
-	    public ResponseEntity<Contract> updateContract(@PathVariable Long contractId, @RequestBody Map<String, String> updates) {
+	    public ResponseEntity<Contract> updateContract(@PathVariable Long contractId, @RequestBody Map<String, Boolean> updates) {
 	        return contractRepository.findById(contractId)
 	                .map(contract -> {
-	                    String status = updates.get("status");
+	                	Boolean status = updates.get("flag");
 	                    if (status != null) {
-	                        contract.setStatus(status);
+	                        contract.setFlag(status);
 	                        contractRepository.save(contract);
 	                    }
 	                    return ResponseEntity.ok(contract);

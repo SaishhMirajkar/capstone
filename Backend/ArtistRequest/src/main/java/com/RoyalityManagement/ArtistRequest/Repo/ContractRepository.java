@@ -14,6 +14,6 @@ public interface ContractRepository extends JpaRepository<Contract,Long>{
 	@Query("SELECT c FROM Contract c WHERE :currentDate BETWEEN c.contractStartDate AND c.contractEndDate")
     List<Contract> findActiveContracts(LocalDate currentDate);
 	
-	@Query("SELECT c FROM Contract c WHERE c.managerId = :managerId AND c.approach = 'artist'")    
+	@Query("SELECT c FROM Contract c WHERE c.managerId = :managerId AND c.approach = 'ARTISTS'")    
 	List<Contract> findContractsByManagerIdAndApproacedByArtist(Long managerId);
 }

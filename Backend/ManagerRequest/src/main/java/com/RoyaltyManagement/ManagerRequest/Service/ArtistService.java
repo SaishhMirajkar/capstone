@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.RoyaltyManagement.ManagerRequest.Entity.Artist;
+import com.RoyaltyManagement.ManagerRequest.Entity.Artists;
 import com.RoyaltyManagement.ManagerRequest.Repo.ArtistRepository;
 
 
@@ -15,8 +15,8 @@ public class ArtistService {
     @Autowired
     private ArtistRepository artistRepository;
 
-    public List<Artist> getArtistsWithNullManagerid() {
-        return artistRepository.findByManageridIsNull();
+    public List<Artists> getArtistsWithNullManagerId() {
+        return artistRepository.findByManager_idIsNull();
     }
     
 

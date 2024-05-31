@@ -55,7 +55,7 @@ public class Managers {
 
 	private String company;
     private Double managerPct;
-
+    
     @OneToMany(mappedBy = "manager")
     private List<Artists> artists;
 }

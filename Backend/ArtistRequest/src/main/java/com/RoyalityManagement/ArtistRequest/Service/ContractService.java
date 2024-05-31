@@ -14,11 +14,12 @@ import com.RoyalityManagement.ArtistRequest.Repo.ContractRepository;
 @Service
 public class ContractService {
  
-    @Autowired
+    private static final Boolean True = null;
+	@Autowired
     private ContractRepository contractRepository;
  
     public Contract saveContract(Contract contract) {
-    	contract.setStatus(APPLICATION_CONSTANT.PENDING);
+    	contract.setFlag(True);
         return contractRepository.save(contract);
     }
     
@@ -40,14 +41,14 @@ public class ContractService {
         List<Contract> contracts = contractRepository.findActiveContracts(currentDate);
  
         for (Contract contract : contracts) {
-            contract.setStatus("active");
+            contract.setContractStatus("active");
             contractRepository.save(contract);
         }
  
         List<Contract> allContracts = contractRepository.findAll();
         for (Contract contract : allContracts) {
             if (!contracts.contains(contract)) {
-                contract.setStatus("inactive");
+                contract.setContractStatus("inactive");
                 contractRepository.save(contract);
             }
         }

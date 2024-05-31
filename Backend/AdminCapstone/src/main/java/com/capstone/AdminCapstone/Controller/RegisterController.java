@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capstone.AdminCapstone.Entities.Artist;
-import com.capstone.AdminCapstone.Entities.Manager;
+import com.capstone.AdminCapstone.Entities.Artists;
+import com.capstone.AdminCapstone.Entities.Managers;
 import com.capstone.AdminCapstone.Entities.User;
 import com.capstone.AdminCapstone.Model.ArtistRegistrationRequest;
 import com.capstone.AdminCapstone.Model.ManagerRegisterRequest;
@@ -61,9 +61,9 @@ public class RegisterController {
                     .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + newUser.getUserid()));
 
             // Create a new Artist object
-            Artist artist = new Artist();
+            Artists artist = new Artists();
             artist.setArtistid(user.getUserid()); // Set the artistid to the userid
-            artist.setPhoneNo(a_request.getPhoneNo());
+            artist.setPhone(a_request.getPhoneNo());
             artist.setStageName(a_request.getStageName());
             artist.setRealName(a_request.getRealName());
             artist.setCountry(a_request.getCountry());
@@ -101,7 +101,7 @@ public class RegisterController {
                     .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + newUser.getUserid()));
 
             // Create a new Artist object
-            Manager manager = new Manager();
+            Managers manager = new Managers();
 //            artist.setUser(user); // Set the User object to the artist
             manager.setManagerid(user.getUserid()); // Set the artistid to the userid
             manager.setManagerName(m_request.getManagerName());
