@@ -1,29 +1,37 @@
-package com.capstone.LoginCapstone.Entity;
+package com.capstone.AdminCapstone.Entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "users")
+@Table(name="users")
 public class User {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userid")
     private Long userid;
+
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "emailid", unique = true, nullable = false)
     private String emailid;
+
+    @Column(name = "role", nullable = false)
     private String role;
-    private boolean firstTimeLogin;
-    
 
+    @Column(name = "firstTimeLogin", nullable = false)
+    private boolean firstTimeLogin = true;
 
-    // Constructors, getters, and setters
+    // Getters and setters
 
     public Long getUserid() {
         return userid;
@@ -73,4 +81,3 @@ public class User {
         this.firstTimeLogin = firstTimeLogin;
     }
 }
-
