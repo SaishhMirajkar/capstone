@@ -1,7 +1,7 @@
 package com.example.rms_microservice.service;
 
 
-import com.example.rms_microservice.model.Stream;
+import com.example.rms_microservice.model.Streams;
 import com.example.rms_microservice.repository.StreamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,16 +33,16 @@ public class StreamService {
         return royalty;
     }
 
-    public Optional<Stream> findLatestStreamBySongId(Long songId) {
+    public Optional<Streams> findLatestStreamBySongId(Long songId) {
         return streamRepository.findTopBySongIdOrderByDateDesc(songId);
     }
 
-    public void saveStream(Stream stream) {
+    public void saveStream(Streams stream) {
         streamRepository.save(stream);
     }
     public LocalDate findLatestStreamDate() {
         return streamRepository.findTopByOrderByDateDesc()
-                .map(Stream::getDate)
+                .map(Streams::getDate)
                 .orElse(LocalDate.of(2024, 3, 19));
     }
 }

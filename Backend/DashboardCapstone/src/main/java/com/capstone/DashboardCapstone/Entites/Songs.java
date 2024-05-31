@@ -15,20 +15,14 @@ public class Songs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long songId;
-
-    @Override
-	public String toString() {
-		return "Songs [songId=" + songId + ", title=" + title + ", releaseDate=" + releaseDate + ", collabed="
-				+ collabed + ", collaborationPct=" + collaborationPct + ", genre=" + genre + ", country=" + country
-				+ ", artist=" + artist + "]";
-	} 
-
 	private String title;
     private Date releaseDate;
-    private Boolean collabed;
+    private String collabed;
     private Double collaborationPct;
     private String genre;
     private String country;
+    private Long collaborationArtistId;
+    private Double artist2Pct;
 
     @ManyToOne
     @JoinColumn(name = "artist_id")
@@ -58,11 +52,11 @@ public class Songs {
 		this.releaseDate = releaseDate;
 	}
 
-	public Boolean getCollabed() {
+	public String getCollabed() {
 		return collabed;
 	}
 
-	public void setCollabed(Boolean collabed) {
+	public void setCollabed(String collabed) {
 		this.collabed = collabed;
 	}
 
@@ -90,6 +84,22 @@ public class Songs {
 		this.country = country;
 	}
 
+	public Long getCollaborationArtistId() {
+		return collaborationArtistId;
+	}
+
+	public void setCollaborationArtistId(Long collaborationArtistId) {
+		this.collaborationArtistId = collaborationArtistId;
+	}
+
+	public Double getArtist2Pct() {
+		return artist2Pct;
+	}
+
+	public void setArtist2Pct(Double artist2Pct) {
+		this.artist2Pct = artist2Pct;
+	}
+
 	public Artists getArtist() {
 		return artist;
 	}
@@ -97,4 +107,13 @@ public class Songs {
 	public void setArtist(Artists artist) {
 		this.artist = artist;
 	}
+
+	@Override
+	public String toString() {
+		return "Songs [songId=" + songId + ", title=" + title + ", releaseDate=" + releaseDate + ", collabed="
+				+ collabed + ", collaborationPct=" + collaborationPct + ", genre=" + genre + ", country=" + country
+				+ ", collaborationArtistId=" + collaborationArtistId + ", artist2Pct=" + artist2Pct + ", artist="
+				+ artist + "]";
+	}
+	
 }

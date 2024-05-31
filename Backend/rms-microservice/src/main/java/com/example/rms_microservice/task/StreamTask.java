@@ -1,17 +1,18 @@
 package com.example.rms_microservice.task;
 
 
-import com.example.rms_microservice.model.Stream;
-import com.example.rms_microservice.model.Song;
-import com.example.rms_microservice.repository.SongRepository;
-import com.example.rms_microservice.service.StreamService;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Random;
+import com.example.rms_microservice.model.Songs;
+import com.example.rms_microservice.model.Streams;
+import com.example.rms_microservice.repository.SongRepository;
+import com.example.rms_microservice.service.StreamService;
 
 @Component
 public class StreamTask {
@@ -27,18 +28,18 @@ public class StreamTask {
 	    @Scheduled(fixedRate = 300000)
 	    public void generateStreamData() {
 	        LocalDate latestDate = streamService.findLatestStreamDate();
-	        List<Song> songs = songRepository.findAll();
+	        List<Songs> songs = songRepository.findAll();
 	        
-	        for (Song song : songs) {
+	        for (Songs song : songs) {
 	            Long songId = song.getSongId();
-	            Stream latestStream = streamService.findLatestStreamBySongId(songId).orElse(null);
+	            Streams latestStream = streamService.findLatestStreamBySongId(songId).orElse(null);
 
 	            LocalDate newDate = (latestStream == null) ? latestDate.plusDays(1) : latestStream.getDate().plusDays(1);
 
 	            long randomStreams = random.nextInt(100000);
 	            double royalty = streamService.calculateRoyalty(randomStreams);
 
-	            Stream newStream = new Stream();
+	            Streams newStream = new Streams();
 	            newStream.setDate(newDate);
 	            newStream.setSongId(songId);
 	            newStream.setStreams(randomStreams);

@@ -1,8 +1,11 @@
+server:
+  port: 8088
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/rms
+    url: jdbc:mysql://localhost:3306/capstoneDb
     username: root
-    password: root@123
+    password: 
   jpa:
     hibernate:
       ddl-auto: update

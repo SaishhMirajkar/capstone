@@ -1,17 +1,19 @@
 package com.example.SongAddition.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Song {
+public class Songs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long songId;
     private String title;
-    private String releaseDate;
+    private Date releaseDate;
     private String collabed;
     private Long artistId;
     private Double collaborationPct;
@@ -43,10 +45,10 @@ public class Song {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getReleaseDate() {
+	public Date getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(String releaseDate) {
+	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 	public String getCollabed() {

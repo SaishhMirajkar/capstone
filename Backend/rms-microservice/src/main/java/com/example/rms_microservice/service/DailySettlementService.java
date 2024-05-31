@@ -1,9 +1,9 @@
 package com.example.rms_microservice.service;
 
-import com.example.rms_microservice.model.Contract;
+import com.example.rms_microservice.model.RoyaltyContract;
 import com.example.rms_microservice.model.DailySettlement;
-import com.example.rms_microservice.model.Stream;
-import com.example.rms_microservice.model.Song;
+import com.example.rms_microservice.model.Streams;
+import com.example.rms_microservice.model.Songs;
 import com.example.rms_microservice.repository.ContractRepository;
 import com.example.rms_microservice.repository.DailySettlementRepository;
 import com.example.rms_microservice.repository.StreamRepository;
@@ -210,11 +210,11 @@ public class DailySettlementService {
     private DailySettlementRepository dailySettlementRepository;
 
     public void calculateAndSaveDailySettlements() {
-        List<Stream> streams = streamRepository.findAll();
+        List<Streams> streams = streamRepository.findAll();
         Map<LocalDate, Map<Long, Double>> artistRoyalties = new HashMap<>();
 
-        for (Stream stream : streams) {
-            Song song = songRepository.findById(stream.getSongId()).orElse(null);
+        for (Streams stream : streams) {
+            Songs song = songRepository.findById(stream.getSongId()).orElse(null);
             if (song == null) continue;
 
             double streamRoyalty = stream.getRoyalty();
@@ -249,7 +249,7 @@ public class DailySettlementService {
                 Double totalRoyalty = royaltyEntry.getValue();
 
                 // Apply contract
-                Contract contract = contractRepository.findByArtistId(artistId).orElse(null);
+                RoyaltyContract contract = contractRepository.findByArtistId(artistId).orElse(null);
                 if (contract != null && contract.getStatus().equalsIgnoreCase("active")) {
                     double artistShare = totalRoyalty * contract.getArtistPct() / 100;
                     double managerShare = totalRoyalty * contract.getManagerPct() / 100;

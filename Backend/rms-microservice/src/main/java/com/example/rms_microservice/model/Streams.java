@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Stream {
+public class Streams {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long streamId;
