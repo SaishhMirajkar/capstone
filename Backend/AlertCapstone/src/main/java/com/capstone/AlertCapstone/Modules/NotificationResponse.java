@@ -1,7 +1,10 @@
 package com.capstone.AlertCapstone.Modules;
+
+import java.util.List;
+
 public class NotificationResponse {
     private String request;
-    private String payout;
+    private List<String> payout;
     private String streams;
 	public String getRequest() {
 		return request;
@@ -9,10 +12,10 @@ public class NotificationResponse {
 	public void setRequest(String request) {
 		this.request = request;
 	}
-	public String getPayout() {
+	public List<String> getPayout() {
 		return payout;
 	}
-	public void setPayout(String payout) {
+	public void setPayout(List<String> payout) {
 		this.payout = payout;
 	}
 	public String getStreams() {
