@@ -21,7 +21,7 @@ public class Songs {
 		return "Songs [songId=" + songId + ", title=" + title + ", releaseDate=" + releaseDate + ", collabed="
 				+ collabed + ", collaborationPct=" + collaborationPct + ", genre=" + genre + ", country=" + country
 				+ ", artist=" + artist + "]";
-	}
+	} 
 
 	private String title;
     private Date releaseDate;
