@@ -25,7 +25,7 @@ public interface StreamRepository extends JpaRepository<Streams, Long> {
 	    @Query("SELECT s.date, SUM(s.royalty) FROM Streams s JOIN s.song so JOIN so.artist a WHERE a.id = :artistId GROUP BY s.date")
 	    List<Object[]> findTotalRoyaltyByArtistIdGroupedByDate(@Param("artistId") Long artistId);
 	    
-	    @Query("SELECT so.songId, so.title, SUM(s.streams), SUM(s.royalty) FROM Streams s JOIN s.song so WHERE so.artist.id = :artistId GROUP BY so.songId, so.title ORDER BY so.songId")
+	    @Query("SELECT so.songId, so.title, SUM(s.streams), SUM(s.royalty) FROM Streams s JOIN s.song so WHERE so.artist.id = :artistId GROUP BY so.songId, so.title ORDER BY SUM(s.streams) DESC")
 	     List<Object[]> findSongsByArtistIdWithStreamsAndRoyalty(@Param("artistId") Long artistId);
 	    
 	    @Query("SELECT s.date, SUM(s.streams) FROM Streams s JOIN s.song so JOIN so.artist a WHERE a.manager.managerId = :managerId GROUP BY s.date ORDER BY s.date")

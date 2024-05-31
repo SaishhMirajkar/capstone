@@ -14,7 +14,7 @@ public interface ArtistRepository extends JpaRepository<Artists, Long> {
 	@Query("SELECT a FROM Artists a WHERE a.manager.id = :managerId")
     List<Artists> findByManagerId(@Param("managerId") Long managerId);
 	
-	@Query("SELECT a.artistId, a.stageName,SUM(s.streams), SUM(s.royalty) FROM Streams s JOIN s.song so JOIN so.artist a WHERE a.manager.id = :managerId GROUP BY a.artistId ORDER BY a.artistId")
+	@Query("SELECT a.artistId, a.stageName,SUM(s.streams), SUM(s.royalty) FROM Streams s JOIN s.song so JOIN so.artist a WHERE a.manager.id = :managerId GROUP BY a.artistId ORDER BY SUM(s.royalty) DESC")
 	    List<Object[]> findTop5ArtistsByManagerId(@Param("managerId") Long managerId);
 	    
 	@Query("SELECT a.artistId, a.stageName, SUM(s.streams),SUM(s.royalty) FROM Streams s JOIN s.song so JOIN so.artist a GROUP BY a.artistId ORDER BY SUM(s.streams) DESC")
