@@ -42,28 +42,24 @@ public class JwtUtil {
 
     // Extract username from token
     public String extractUsername(String token) {
-        return extractClaim(token, Claims::getSubject);
-    }
-
-    // Extract expiration date from token
-    public Date extractExpiration(String token) {
-        return extractClaim(token, Claims::getExpiration);
-    }
-
-    // Extract claim from token using provided function
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractAllClaims(token);
-        return claimsResolver.apply(claims);
-    }
-
-    // Extract all claims from token
-    private Claims extractAllClaims(String token) {
         SecretKey key = getSecretKey();
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
-                .getBody();
+                .getBody()
+                .getSubject();
+    }
+
+    // Extract expiration date from token
+    public Date extractExpiration(String token) {
+        SecretKey key = getSecretKey();
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getExpiration();
     }
 
     // Check if token is expired

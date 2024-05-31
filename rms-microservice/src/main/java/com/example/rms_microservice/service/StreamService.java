@@ -1,14 +1,16 @@
-package com.capstone.RoyaltyCapstone.Service;
+package com.example.rms_microservice.service;
 
 
+import com.example.rms_microservice.model.Stream;
+import com.example.rms_microservice.repository.StreamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.capstone.RoyaltyCapstone.StreamRepo.StreamRepository;
-import com.capstone.RoyaltyCapstone.Streams.Streams;
+import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
-public class RoyaltyService {
+public class StreamService {
     private static final double TIER_1_RATE = 0.002;
     private static final double TIER_2_RATE = 0.005;
     private static final double TIER_3_RATE = 0.01;
@@ -18,12 +20,7 @@ public class RoyaltyService {
     @Autowired
     private StreamRepository streamRepository;
 
-    public double calculateRoyalty(Long songId) {
-        Streams stream = streamRepository.findBySongId(songId);
-        if (stream == null) {
-            throw new RuntimeException("Song not found");
-        }
-        long streams = stream.getStreams();
+    public double calculateRoyalty(Long streams) {
         double royalty = 0.0;
         if (streams <= TIER_1_THRESHOLD) {
             royalty = streams * TIER_1_RATE;
@@ -33,9 +30,20 @@ public class RoyaltyService {
             royalty = TIER_1_THRESHOLD * TIER_1_RATE + (TIER_2_THRESHOLD - TIER_1_THRESHOLD) * TIER_2_RATE
                     + (streams - TIER_2_THRESHOLD) * TIER_3_RATE;
         }
-        stream.setRoyalty(royalty);
-        streamRepository.save(stream);
         return royalty;
+    }
 
+    public Optional<Stream> findLatestStreamBySongId(Long songId) {
+        return streamRepository.findTopBySongIdOrderByDateDesc(songId);
+    }
+
+    public void saveStream(Stream stream) {
+        streamRepository.save(stream);
+    }
+    public LocalDate findLatestStreamDate() {
+        return streamRepository.findTopByOrderByDateDesc()
+                .map(Stream::getDate)
+                .orElse(LocalDate.of(2024, 3, 19));
     }
 }
+
