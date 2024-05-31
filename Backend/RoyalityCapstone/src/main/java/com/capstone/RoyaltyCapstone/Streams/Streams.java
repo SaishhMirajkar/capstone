@@ -14,8 +14,14 @@ public class Streams {
     private Date date;
     private int songId; 
     private int streams; 
-    private float royalty; 
-    private boolean flag;
+    private Double royalty; 
+    public Double getRoyalty() {
+		return royalty;
+	}
+	public void setRoyalty(Double royalty) {
+		this.royalty = royalty;
+	}
+	private boolean flag;
 	public int getStreamId() {
 		return streamId;
 	}
@@ -40,12 +46,7 @@ public class Streams {
 	public void setStreams(int streams) {
 		this.streams = streams;
 	}
-	public float getRoyalty() {
-		return royalty;
-	}
-	public void setRoyalty(float royalty) {
-		this.royalty = royalty;
-	}
+	
 	public boolean isFlag() {
 		return flag;
 	}
