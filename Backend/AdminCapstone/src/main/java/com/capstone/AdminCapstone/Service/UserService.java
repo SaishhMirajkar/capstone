@@ -1,6 +1,7 @@
 package com.capstone.AdminCapstone.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,7 +34,14 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
     
     public List<User> getAllActiveUsers() {
-        return userRepository.findByIsDeletedFalse();
+        List<User> activeUsers = userRepository.findByIsDeletedFalse();
+        
+        // Filter out admin users
+        List<User> nonAdminUsers = activeUsers.stream()
+                .filter(user -> !"ADMIN".equals(user.getRole()))
+                .collect(Collectors.toList());
+
+        return nonAdminUsers;
     }
 
     @Transactional

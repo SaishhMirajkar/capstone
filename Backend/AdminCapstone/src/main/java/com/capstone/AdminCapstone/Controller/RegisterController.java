@@ -132,7 +132,7 @@ public class RegisterController {
         }
     }
     
-    @DeleteMapping("delet/{userId}")
+    @DeleteMapping("/delet/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable Long userId) {
         try {
             userService.softDeleteUser(userId);
