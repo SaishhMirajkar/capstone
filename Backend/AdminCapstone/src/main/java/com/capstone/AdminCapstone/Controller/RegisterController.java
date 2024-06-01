@@ -74,7 +74,7 @@ public class RegisterController {
             // Create a new Artist object
             Artists artist = new Artists();
             artist.setArtistid(user.getUserid()); // Set the artistid to the userid
-            artist.setPhone(a_request.getPhoneNo());
+            artist.setPhoneNo(a_request.getPhoneNo());
             artist.setStageName(a_request.getStageName());
             artist.setRealName(a_request.getRealName());
             artist.setCountry(a_request.getCountry());
