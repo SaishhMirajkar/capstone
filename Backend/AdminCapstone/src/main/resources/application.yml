@@ -1,5 +1,5 @@
 server:
-M port: 8081
+  port: 8081
  
 spring:
  application:
