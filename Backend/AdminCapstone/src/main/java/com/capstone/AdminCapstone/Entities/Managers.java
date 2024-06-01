@@ -18,9 +18,19 @@ public class Managers {
 
     @Column(name = "company", nullable = false)
     private String company;
+    
+    private boolean deleted = false;
 
 
-    public Long getManagerid() {
+    public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public Long getManagerid() {
         return managerid;
     }
 

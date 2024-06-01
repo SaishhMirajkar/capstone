@@ -1,12 +1,20 @@
 package com.capstone.AdminCapstone.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.capstone.AdminCapstone.Entities.Artists;
+import com.capstone.AdminCapstone.Entities.Managers;
 import com.capstone.AdminCapstone.Entities.User;
+import com.capstone.AdminCapstone.Repository.ArtistRepository;
+import com.capstone.AdminCapstone.Repository.ManagerRepository;
 import com.capstone.AdminCapstone.Repository.UserRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 
 @Service
@@ -15,9 +23,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
    
+    @Autowired
+    private ArtistRepository artistRepository;
+
+    @Autowired
+    private ManagerRepository managerRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    
+    public List<User> getAllActiveUsers() {
+        return userRepository.findByIsDeletedFalse();
+    }
 
     @Transactional
     public User registerUser(String username, String password, String email, String role) {
@@ -30,5 +47,26 @@ public class UserService {
         return userRepository.save(user);
     }
     
+    @Transactional
+    public void softDeleteUser(Long userId) {
+        // Soft delete user
+        User user = userRepository.findById(userId)
+                                  .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
+        user.setDeleted(true);
+        userRepository.save(user);
+
+        // Soft delete associated records
+        Artists artist = artistRepository.findByArtistid(userId);
+        if (artist != null) {
+            artist.setDeleted(true);
+            artistRepository.save(artist);
+        }
+
+        Managers manager = managerRepository.findByManagerid(userId);
+        if (manager != null) {
+            manager.setDeleted(true);
+            managerRepository.save(manager);
+        }
+    }
  
 }

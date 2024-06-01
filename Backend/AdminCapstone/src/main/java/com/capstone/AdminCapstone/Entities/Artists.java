@@ -18,8 +18,25 @@ public class Artists {
     private String realName;
     private String country;
     private Long manager_id;
+    private boolean deleted = false; 
 
-    public Long getManagerid() {
+    public Long getManager_id() {
+		return manager_id;
+	}
+
+	public void setManager_id(Long manager_id) {
+		this.manager_id = manager_id;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public Long getManagerid() {
 		return manager_id;
 	}
 

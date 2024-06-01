@@ -1,9 +1,14 @@
 package com.capstone.AdminCapstone.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +46,12 @@ public class RegisterController {
     
     @Autowired
     private EmailSenderService senderService;
+    
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllActiveUsers() {
+        List<User> activeUsers = userService.getAllActiveUsers();
+        return ResponseEntity.ok(activeUsers);
+    }
 
     @PostMapping("/artist")
     public ResponseEntity<?> registerArtist(@RequestBody ArtistRegistrationRequest a_request) {
@@ -118,6 +129,16 @@ public class RegisterController {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Registration failed");
+        }
+    }
+    
+    @DeleteMapping("delet/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long userId) {
+        try {
+            userService.softDeleteUser(userId);
+            return ResponseEntity.ok("User and associated records deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete user and associated records");
         }
     }
 }

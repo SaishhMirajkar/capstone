@@ -6,5 +6,5 @@ import com.capstone.AdminCapstone.Entities.Artists;
 
 public interface ArtistRepository extends JpaRepository<Artists, Long>{
 
-
+	Artists findByArtistid(Long userId);
 }
