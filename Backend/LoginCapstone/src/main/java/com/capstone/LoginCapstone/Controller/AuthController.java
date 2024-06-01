@@ -36,13 +36,14 @@ public class AuthController {
             System.out.println(response);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            if (e.getMessage().equals("User not found")) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-            } else if (e.getMessage().equals("Invalid password")) {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-            } else {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
-            }
+        	String message = e.getMessage();
+        	if ("User not found".equals(message)) {
+        	    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        	} else if ("Invalid password".equals(message)) {
+        	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(message);
+        	} else {
+        	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error");
+        	}
         }
     }
 
