@@ -6,11 +6,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "managers")
+@Table(name = "manager")
 public class Managers {
 
     @Id
-    @Column(name = "manager_id")
+    @Column(name = "managerid")
     private Long managerid;
 
     @Column(name = "manager_name", nullable = false)
@@ -18,9 +18,21 @@ public class Managers {
 
     @Column(name = "company", nullable = false)
     private String company;
+    
+    private boolean isDeleted = false; 
 
 
-    public Long getManagerid() {
+ 
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Long getManagerid() {
         return managerid;
     }
 

@@ -6,25 +6,38 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "artists")
+@Table(name = "artist")
 public class Artists {
 
     @Id
-    @Column(name = "artist_id")
+    @Column(name = "artistid")
     private Long artistid;
 
-    private String phone;
+    private String phoneNo;
     private String stageName;
     private String realName;
     private String country;
-    private Long manager_id;
+    private Long managerid;
+    private boolean isDeleted = false; 
 
-    public Long getManagerid() {
-		return manager_id;
+  
+
+	public boolean isDeleted() {
+		return isDeleted;
 	}
 
-	public void setManagerid(Long manager_id) {
-		this.manager_id = manager_id;
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	
+
+	public Long getManagerid() {
+		return managerid;
+	}
+
+	public void setManagerid(Long managerid) {
+		this.managerid = managerid;
 	}
 
 	public Long getArtistid() {
@@ -35,15 +48,17 @@ public class Artists {
         this.artistid = artistid;
     }
 
-    public String getPhone() {
-        return phone;
-    }
+ 
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public String getPhoneNo() {
+		return phoneNo;
+	}
 
-    public String getStageName() {
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	public String getStageName() {
         return stageName;
     }
 
@@ -69,7 +84,7 @@ public class Artists {
 
 	@Override
 	public String toString() {
-		return "Artist [artistid=" + artistid + ", phoneNo=" + phone + ", stageName=" + stageName + ", realName="
+		return "Artist [artistid=" + artistid + ", phoneNo=" + phoneNo + ", stageName=" + stageName + ", realName="
 				+ realName + ", country=" + country + "]";
 	}
 

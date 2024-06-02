@@ -30,10 +30,21 @@ public class User {
 
     @Column(name = "firstTimeLogin", nullable = false)
     private boolean firstTimeLogin = true;
+    
+    private boolean isDeleted; 
+    
 
     // Getters and setters
 
-    public Long getUserid() {
+    public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Long getUserid() {
         return userid;
     }
 
