@@ -2,6 +2,7 @@ package com.capstone.AlertCapstone.Entities;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,7 +23,8 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "artist_id")
     private Artists artist;
-
+    @Column(name = "userId")
+    private Long userId;
 	public Long getPaymentId() {
 		return paymentId;
 	}
@@ -61,6 +63,13 @@ public class Payment {
 
 	public void setArtist(Artists artist) {
 		this.artist = artist;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	@Override

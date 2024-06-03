@@ -40,18 +40,18 @@ public class ContarctController {
 	    }
 	    
 	    @GetMapping("/pending/{managerId}")
-	    public ResponseEntity<List<Contract>> getPendingContracts(@PathVariable Long managerId) {
-	    	List<Contract> contracts = contractService.getContractsByManagerId(managerId);
+	    public ResponseEntity<List<Contract>> getPendingContracts(@PathVariable Long managerid) {
+	    	List<Contract> contracts = contractService.getContractsByManagerId(managerid);
 	        return ResponseEntity.ok(contracts);
 	    }
 	    
 	    @PutMapping("/{contractId}")
-	    public ResponseEntity<Contract> updateContract(@PathVariable Long contractId, @RequestBody Map<String, Boolean> updates) {
+	    public ResponseEntity<Contract> updateContract(@PathVariable Long contractId, @RequestBody Map<String, String> updates) {
 	        return contractRepository.findById(contractId)
 	                .map(contract -> {
-	                    Boolean status = updates.get("flag");
+	                    String status = updates.get("status");
 	                    if (status != null) {
-	                        contract.setFlag(status);
+	                        contract.setStatus(status);
 	                        contractRepository.save(contract);
 	                    }
 	                    return ResponseEntity.ok(contract);

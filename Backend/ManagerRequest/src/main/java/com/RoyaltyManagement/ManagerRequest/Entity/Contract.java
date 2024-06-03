@@ -28,7 +28,7 @@ public class Contract {
     private int artistPercentageOfRoyalty;
     private LocalDate contractStartDate;
     private LocalDate contractEndDate;
-    private Boolean flag;
+    private String Status;
     private String approach;
     private String contractStatus;
    
@@ -36,9 +36,28 @@ public class Contract {
     
 	
 
+
+
+	@Override
+	public String toString() {
+		return "Contract [contractId=" + contractId + ", artistId=" + artistId + ", managerId=" + managerId
+				+ ", managerPercentageOfRoyalty=" + managerPercentageOfRoyalty + ", artistPercentageOfRoyalty="
+				+ artistPercentageOfRoyalty + ", contractStartDate=" + contractStartDate + ", contractEndDate="
+				+ contractEndDate + ", Status=" + Status + ", approach=" + approach + ", contractStatus="
+				+ contractStatus + "]";
+	}
+
+
+
+
+
+
+
 	public Long getContractId() {
 		return contractId;
 	}
+
+
 
 
 
@@ -52,9 +71,13 @@ public class Contract {
 
 
 
+
+
 	public Long getArtistId() {
 		return artistId;
 	}
+
+
 
 
 
@@ -68,9 +91,13 @@ public class Contract {
 
 
 
+
+
 	public Long getManagerId() {
 		return managerId;
 	}
+
+
 
 
 
@@ -84,9 +111,13 @@ public class Contract {
 
 
 
+
+
 	public int getManagerPercentageOfRoyalty() {
 		return managerPercentageOfRoyalty;
 	}
+
+
 
 
 
@@ -100,9 +131,13 @@ public class Contract {
 
 
 
+
+
 	public int getArtistPercentageOfRoyalty() {
 		return artistPercentageOfRoyalty;
 	}
+
+
 
 
 
@@ -116,9 +151,13 @@ public class Contract {
 
 
 
+
+
 	public LocalDate getContractStartDate() {
 		return contractStartDate;
 	}
+
+
 
 
 
@@ -132,9 +171,13 @@ public class Contract {
 
 
 
+
+
 	public LocalDate getContractEndDate() {
 		return contractEndDate;
 	}
+
+
 
 
 
@@ -148,17 +191,23 @@ public class Contract {
 
 
 
-	public Boolean getFlag() {
-		return flag;
+
+
+	public String getStatus() {
+		return Status;
 	}
 
 
 
 
 
-	public void setFlag(Boolean flag) {
-		this.flag = flag;
+
+
+	public void setStatus(String status) {
+		Status = status;
 	}
+
+
 
 
 
@@ -172,9 +221,13 @@ public class Contract {
 
 
 
+
+
 	public void setApproach(String approach) {
 		this.approach = approach;
 	}
+
+
 
 
 
@@ -188,22 +241,13 @@ public class Contract {
 
 
 
+
+
 	public void setContractStatus(String contractStatus) {
 		this.contractStatus = contractStatus;
 	}
 
 
-
-
-
-	@Override
-	public String toString() {
-		return "Contract [contractId=" + contractId + ", artistId=" + artistId + ", managerId=" + managerId
-				+ ", managerPercentageOfRoyalty=" + managerPercentageOfRoyalty + ", artistPercentageOfRoyalty="
-				+ artistPercentageOfRoyalty + ", contractStartDate=" + contractStartDate + ", contractEndDate="
-				+ contractEndDate + ", flag=" + flag + ", approach=" + approach + ", contractStatus=" + contractStatus
-				+ "]";
-	}
 
 
 

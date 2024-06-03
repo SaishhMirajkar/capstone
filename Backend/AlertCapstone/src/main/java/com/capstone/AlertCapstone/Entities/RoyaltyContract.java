@@ -2,6 +2,7 @@ package com.capstone.AlertCapstone.Entities;
 
 import com.capstone.AlertCapstone.Entities.Enums.Approach;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,70 +33,80 @@ public class RoyaltyContract {
     private Double artistPct;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "approach")
     private Approach approached;
 
+    private String status;
     private Boolean flag;
 
-    // Getters and Setters
-    public Long getContractId() {
-        return contractId;
-    }
+	public Long getContractId() {
+		return contractId;
+	}
 
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
-    }
+	public void setContractId(Long contractId) {
+		this.contractId = contractId;
+	}
 
-    public Artists getArtist() {
-        return artist;
-    }
+	public Artists getArtist() {
+		return artist;
+	}
 
-    public void setArtist(Artists artist) {
-        this.artist = artist;
-    }
+	public void setArtist(Artists artist) {
+		this.artist = artist;
+	}
 
-    public Managers getManager() {
-        return manager;
-    }
+	public Managers getManager() {
+		return manager;
+	}
 
-    public void setManager(Managers manager) {
-        this.manager = manager;
-    }
+	public void setManager(Managers manager) {
+		this.manager = manager;
+	}
 
-    public Songs getSong() {
-        return song;
-    }
+	public Songs getSong() {
+		return song;
+	}
 
-    public void setSong(Songs song) {
-        this.song = song;
-    }
+	public void setSong(Songs song) {
+		this.song = song;
+	}
 
-    public Double getArtistPct() {
-        return artistPct;
-    }
+	public Double getArtistPct() {
+		return artistPct;
+	}
 
-    public void setArtistPct(Double artistPct) {
-        this.artistPct = artistPct;
-    }
+	public void setArtistPct(Double artistPct) {
+		this.artistPct = artistPct;
+	}
 
-    public Approach getApproached() {
-        return approached;
-    }
+	public Approach getApproached() {
+		return approached;
+	}
 
-    public void setApproached(Approach approached) {
-        this.approached = approached;
-    }
+	public void setApproached(Approach approached) {
+		this.approached = approached;
+	}
 
-    public Boolean getFlag() {
-        return flag;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setFlag(Boolean flag) {
-        this.flag = flag;
-    }
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Boolean getFlag() {
+		return flag;
+	}
 
-    @Override
-    public String toString() {
-        return "RoyaltyContract [contractId=" + contractId + ", artist=" + artist + ", manager=" + manager + ", song="
-                + song + ", artistPct=" + artistPct + ", approached=" + approached + ", flag=" + flag + "]";
-    }
+	public void setFlag(Boolean flag) {
+		this.flag = flag;
+	}
+
+	@Override
+	public String toString() {
+		return "RoyaltyContract [contractId=" + contractId + ", artist=" + artist + ", manager=" + manager + ", song="
+				+ song + ", artistPct=" + artistPct + ", approached=" + approached + ", Status=" + status + "]";
+	}
+
+    
 }

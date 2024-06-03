@@ -3,6 +3,7 @@ package com.capstone.AlertCapstone.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capstone.AlertCapstone.APPLICATION_CONSTANT;
 import com.capstone.AlertCapstone.Entities.Artists;
 import com.capstone.AlertCapstone.Entities.Managers;
 import com.capstone.AlertCapstone.Entities.Payment;
@@ -46,7 +47,7 @@ public class NotificationService {
             response.setStreams("Congrats your song '" + topStream.getSong().getTitle() + "' is the most viewed.");
         }
 
-        List<Payment> payments = paymentRepository.findByArtist_ArtistIdAndFlagTrue(id);
+        List<Payment> payments = paymentRepository.findByUserIdAndFlagTrue(id);
         if (payments != null && !payments.isEmpty()) {
             List<String> payoutMessages = new ArrayList<>();
             for (Payment payment : payments) {
@@ -56,7 +57,7 @@ public class NotificationService {
         }
 
         // Check RoyaltyContract table
-        RoyaltyContract royaltyContract = royaltyContractRepository.findTopByArtist_ArtistIdAndFlagTrueAndApproached(id, Approach.ARTISTS);
+        RoyaltyContract royaltyContract = royaltyContractRepository.findTopByArtist_ArtistIdAndStatusAndApproached(id,"PENDING",Approach.MANAGER);
         if (royaltyContract != null) {
             Managers manager = royaltyContract.getManager();
             if (manager != null) {
@@ -88,7 +89,7 @@ public class NotificationService {
         NotificationResponse response = new NotificationResponse();
 
         // Check RoyaltyContract table
-        RoyaltyContract royaltyContract = royaltyContractRepository.findTopByManager_ManagerIdAndFlagTrueAndApproached(id, Approach.MANAGERS);
+        RoyaltyContract royaltyContract = royaltyContractRepository.findTopByManager_ManagerIdAndStatusAndApproached(id,"PENDING",Approach.ARTIST);
         if (royaltyContract != null) {
             Artists artist = royaltyContract.getArtist();
             if (artist != null) {

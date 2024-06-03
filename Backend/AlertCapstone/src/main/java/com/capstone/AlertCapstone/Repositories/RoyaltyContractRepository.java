@@ -11,8 +11,8 @@ import com.capstone.AlertCapstone.Entities.Enums.Approach;
 import jakarta.transaction.Transactional;
 
 public interface RoyaltyContractRepository extends JpaRepository<RoyaltyContract, Long> {
-    RoyaltyContract findTopByArtist_ArtistIdAndFlagTrueAndApproached(Long artistId, Approach approached);
-    RoyaltyContract findTopByManager_ManagerIdAndFlagTrueAndApproached(Long managerId, Approach approached);
+	RoyaltyContract findTopByArtist_ArtistIdAndStatusAndApproached(Long artistId, String status, Approach approached);
+    RoyaltyContract findTopByManager_ManagerIdAndStatusAndApproached(Long managerId, String status, Approach approached);
     @Transactional
     @Modifying
     @Query("UPDATE RoyaltyContract rc SET rc.flag = false WHERE rc.artist.artistId = :artistId OR rc.manager.managerId = :managerId")

@@ -1,23 +1,24 @@
 package com.example.withdrawal.modal;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.YearMonth;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 //import jakarta.persistence.JoinColumn;
 //import jakarta.persistence.ManyToOne;
 
 @Entity
+@Table(name = "Payment")
 public class Transaction1 {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentId;
-    
+	@Column(name = "paymentAmount")
     private Double amount;
     
     private LocalDate dateCreated;
@@ -27,28 +28,7 @@ public class Transaction1 {
     private String accountType;
     private String bankName;
     private int userId;
-   // private double earning;
-    
-//    @ManyToOne
-//    @JoinColumn(name = "bank_details_id")
-//    private BankDetails bankDetails;
-
-//	public int getPaymentId() {
-//		return paymentId;
-//	}
-//
-//	public void setPaymentId(int paymentId) {
-//		this.paymentId = paymentId;
-//	}
-
-//	public double getEarning() {
-//		return earning;
-//	}
-//
-//	public void setEarning(double earning) {
-//		this.earning = earning;
-//	}
-
+    private Boolean flag= true;
 	public int getPaymentId() {
 		return paymentId;
 	}
@@ -115,23 +95,11 @@ public class Transaction1 {
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
+	public Boolean getFlag() {
+		return flag;
+	}
 
-//	  public int getArtistId() {
-//			return artistId;
-//		}
-//
-//		public void setArtistId(int artistId) {
-//			this.artistId = artistId;
-//		}
-
-//	public BankDetails getBankDetails() {
-//		return bankDetails;
-//	}
-//
-//	public void setBankDetails(BankDetails bankDetails) {
-//		this.bankDetails = bankDetails;
-//	}
-    
-    // getters and setters
-    
+	public void setFlag(Boolean flag) {
+		this.flag = flag;
+	}
 }

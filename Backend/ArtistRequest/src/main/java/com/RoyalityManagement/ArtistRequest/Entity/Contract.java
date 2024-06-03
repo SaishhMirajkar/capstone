@@ -27,7 +27,7 @@ public class Contract {
     private int artistPercentageOfRoyalty;
     private LocalDate contractStartDate;
     private LocalDate contractEndDate;
-    private Boolean flag;
+    private String Status;
     private String approach;
     private String contractStatus;
     
@@ -36,14 +36,28 @@ public class Contract {
 
 
 	
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Contract [contractId=" + contractId + ", artistId=" + artistId + ", managerId=" + managerId
 				+ ", managerPercentageOfRoyalty=" + managerPercentageOfRoyalty + ", artistPercentageOfRoyalty="
 				+ artistPercentageOfRoyalty + ", contractStartDate=" + contractStartDate + ", contractEndDate="
-				+ contractEndDate + ", flag=" + flag + ", approach=" + approach + ", contractStatus=" + contractStatus
-				+ "]";
+				+ contractEndDate + ", Status=" + Status + ", approach=" + approach + ", contractStatus="
+				+ contractStatus + "]";
 	}
+
+
+
+
+
+
+
 
 
 
@@ -59,9 +73,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setContractId(Long contractId) {
 		this.contractId = contractId;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -77,9 +105,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setArtistId(Long artistId) {
 		this.artistId = artistId;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -95,9 +137,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setManagerId(Long managerId) {
 		this.managerId = managerId;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -113,9 +169,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setManagerPercentageOfRoyalty(int managerPercentageOfRoyalty) {
 		this.managerPercentageOfRoyalty = managerPercentageOfRoyalty;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -131,9 +201,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setArtistPercentageOfRoyalty(int artistPercentageOfRoyalty) {
 		this.artistPercentageOfRoyalty = artistPercentageOfRoyalty;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -149,9 +233,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setContractStartDate(LocalDate contractStartDate) {
 		this.contractStartDate = contractStartDate;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -167,6 +265,13 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setContractEndDate(LocalDate contractEndDate) {
 		this.contractEndDate = contractEndDate;
 	}
@@ -176,8 +281,15 @@ public class Contract {
 
 
 
-	public Boolean getFlag() {
-		return flag;
+
+
+
+
+
+
+
+	public String getStatus() {
+		return Status;
 	}
 
 
@@ -185,9 +297,23 @@ public class Contract {
 
 
 
-	public void setFlag(Boolean flag) {
-		this.flag = flag;
+
+
+
+
+
+
+
+	public void setStatus(String status) {
+		Status = status;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -203,9 +329,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setApproach(String approach) {
 		this.approach = approach;
 	}
+
+
+
+
+
+
+
 
 
 
@@ -221,9 +361,23 @@ public class Contract {
 
 
 
+
+
+
+
+
+
+
 	public void setContractStatus(String contractStatus) {
 		this.contractStatus = contractStatus;
 	}
+
+
+
+
+
+
+
 
 
 

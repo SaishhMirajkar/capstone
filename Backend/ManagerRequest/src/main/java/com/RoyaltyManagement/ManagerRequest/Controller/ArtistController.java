@@ -42,7 +42,7 @@ public class ArtistController {
                 .map(artist -> {
                     Long managerId = updates.get("managerId");
                     if (managerId != null) {
-                        artist.setManager_id(managerId);
+                        artist.setManagerId(managerId);
                         artistRepository.save(artist);
                     }
                     return ResponseEntity.ok(artist);

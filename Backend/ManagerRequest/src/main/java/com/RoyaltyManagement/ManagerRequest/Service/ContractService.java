@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.RoyaltyManagement.ManagerRequest.APPLICATION_CONSTANT;
 import com.RoyaltyManagement.ManagerRequest.Entity.Contract;
 import com.RoyaltyManagement.ManagerRequest.Repo.ContractRepository;
 
@@ -16,7 +17,7 @@ public class ContractService {
     private ContractRepository contractRepository;
  
     public Contract saveContract(Contract contract) {
-    	contract.setFlag(true);
+    	contract.setStatus(APPLICATION_CONSTANT.PENDING);
         return contractRepository.save(contract);
     }
     

@@ -11,16 +11,9 @@ public class BankDetails {
 	private String username;
 	private String bankName;
 	private String bicCode;
-	//private String accountType;
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-//	public int getArtistId() {
-//		return artistId;
-//	}
-//	public void setArtistId(int artistId) {
-//		this.artistId = artistId;
-//	}
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
@@ -48,12 +41,6 @@ public class BankDetails {
 	public void setBicCode(String bicCode) {
 		this.bicCode = bicCode;
 	}
-//	public String getAccountType() {
-//		return accountType;
-//	}
-//	public void setAccountType(String accountType) {
-//		this.accountType = accountType;
-//	}
 	@Override
 	public String toString() {
 		return "BankDetails [accountNumber=" + accountNumber + ", username=" + username + ", bankName=" + bankName

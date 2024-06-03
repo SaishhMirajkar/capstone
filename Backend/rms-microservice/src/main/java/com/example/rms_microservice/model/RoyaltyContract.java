@@ -2,6 +2,7 @@ package com.example.rms_microservice.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +14,14 @@ public class RoyaltyContract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long contractId;
     private Long artistId;
+    @Column(name = "artistPercentageOfRoyalty")
     private Double artistPct;
     private Long managerId;
+    @Column(name = "managerPercentageOfRoyalty")
     private Double managerPct;
+    @Column(name = "contractStartDate")
     private LocalDate fromDate;
+    @Column(name = "contractEndDate")
     private LocalDate toDate;
     private String status;
 	public Long getContractId() {

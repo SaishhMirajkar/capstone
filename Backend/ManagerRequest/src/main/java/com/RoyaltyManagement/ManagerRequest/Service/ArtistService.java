@@ -16,7 +16,7 @@ public class ArtistService {
     private ArtistRepository artistRepository;
 
     public List<Artists> getArtistsWithNullManagerId() {
-        return artistRepository.findByManager_idIsNull();
+        return artistRepository.findByManagerIdIsNull();
     }
     
 

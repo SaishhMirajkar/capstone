@@ -16,6 +16,7 @@ public class Streams {
     private Long songId;
     private Long streams;
     private Double royalty;
+    private Boolean flag= true;
 	public Long getStreamId() {
 		return streamId;
 	}
@@ -45,6 +46,13 @@ public class Streams {
 	}
 	public void setRoyalty(Double royalty) {
 		this.royalty = royalty;
+	}
+	public Boolean getFlag() {
+		return flag;
+	}
+
+	public void setFlag(Boolean flag) {
+		this.flag = flag;
 	}
 
 }

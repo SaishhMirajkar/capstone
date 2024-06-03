@@ -14,12 +14,11 @@ import com.RoyalityManagement.ArtistRequest.Repo.ContractRepository;
 @Service
 public class ContractService {
  
-    private static final Boolean True = null;
 	@Autowired
     private ContractRepository contractRepository;
  
     public Contract saveContract(Contract contract) {
-    	contract.setFlag(True);
+    	contract.setStatus(APPLICATION_CONSTANT.PENDING);
         return contractRepository.save(contract);
     }
     

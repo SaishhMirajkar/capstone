@@ -17,7 +17,7 @@ public class Artists {
     private String stageName;
     private String realName;
     private String country;
-    private Long manager_id;
+    private Long managerId;
 	public Long getArtistid() {
 		return artistid;
 	}
@@ -48,35 +48,16 @@ public class Artists {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public Long getManager_id() {
-		return manager_id;
+	public Long getManagerId() {
+		return managerId;
 	}
-	public void setManager_id(Long manager_id) {
-		this.manager_id = manager_id;
+	public void setManagerId(Long managerId) {
+		this.managerId = managerId;
 	}
 	@Override
 	public String toString() {
 		return "Artists [artistid=" + artistid + ", phone=" + phone + ", stageName=" + stageName + ", realName="
-				+ realName + ", country=" + country + ", manager_id=" + manager_id + "]";
+				+ realName + ", country=" + country + ", managerId=" + managerId + "]";
 	}
-
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = "artistid")
-//    private User user;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "managerid")
-//    private User manager;
-
-    // Getters and setters
-//    public User getManager() {
-//        return manager;
-//    }
-//
-//    public void setManager(User manager) {
-//        this.manager = manager;
-//    }
-
-         
+	         
 }

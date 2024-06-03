@@ -72,6 +72,14 @@ public class UserService {
 
         Managers manager = managerRepository.findByManagerid(userId);
         if (manager != null) {
+            // Set managerid to null for all artists associated with this manager
+            List<Artists> artists = artistRepository.findByManagerid(manager.getManagerid());
+            for (Artists associatedArtist : artists) {
+                associatedArtist.setManagerid(null);
+                artistRepository.save(associatedArtist);
+            }
+ 
+            // Soft delete the manager
             manager.setDeleted(true);
             managerRepository.save(manager);
         }

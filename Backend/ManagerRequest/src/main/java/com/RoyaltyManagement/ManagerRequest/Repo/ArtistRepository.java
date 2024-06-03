@@ -9,5 +9,5 @@ import com.RoyaltyManagement.ManagerRequest.Entity.Artists;
 
 public interface ArtistRepository extends JpaRepository<Artists,Long>{
 
-	  List<Artists> findByManager_idIsNull();
+	  List<Artists> findByManagerIdIsNull();
 }
